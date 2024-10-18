@@ -1,5 +1,5 @@
 1.	Создание контейнера nginx, создание контейнера с WSGI-сервером на Python (с помощью docker run ...). 
-1)	Запускаем контейнер на основе образа nginx, сопоставляя локальную папке content с некоторой директорией внутри самого контейнера (создание тома) с помощью -v. ro – readonly – чтобы из контейнера контент был доступен только для чтения. -d - Создаем том внутри контейнера docker run --name my-first-website -v C:\Users\uchen\Desktop\content:/usr/share/nginx/html:ro -d -p 8000:80 nginx
+1)	Запускаем контейнер на основе образа nginx, сопоставляя локальную папку content с некоторым каталогом внутри самого контейнера (создание тома) с помощью -v. ro – readonly – чтобы из контейнера контент был доступен только для чтения. -d - запуск в демон режиме. -p сопоставляем порт на хостовой машине и в контейнере. docker run --name my-first-website -v C:\Users\uchen\Desktop\content:/usr/share/nginx/html:ro -d -p 8000:80 nginx
 
 2)	Запускаем контейнер на основе образа python также сопоставляя хостовую директорию и некоторый каталог внутри контейнера в режиме demon: docker run --name python-web-service -v C:\Users\uchen\Desktop\content:/root/content:ro -d -p 8001:80 python python3 -m http.server --directory /root/content --bind 0.0.0.0 80 
 
