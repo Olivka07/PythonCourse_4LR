@@ -34,3 +34,18 @@ CMD ["python3", "-m", "http.server", "--bind", "0.0.0.0", "80"]
 
 ### Образ с nginx https://hub.docker.com/r/olivka07/my-nginx
 ### Образ с wsgi-server https://hub.docker.com/r/olivka07/my-wsgi-server
+
+3. Был добавлен файл docker-compose.yml для управления несколькими образами и контейнерами одновременно со следующим содержимым:
+   services:
+    nginx:
+      build: content/
+      ports:
+        - 8081:80
+    wsgi:
+      build: python_content/
+      ports:
+        - 8082:80
+      restart: always
+
+   Dockerfile для nginx представлен в папке content, а для wsgi - python_content
+   команда для запуска контейнеров: docker-compose up
